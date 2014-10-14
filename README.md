@@ -1,6 +1,5 @@
 Asteroids
 =========
-
 This is a clone of classical Asteroids game. The project was created mainly for demonstration purposes
 
 There are builds for MacOS X and Windows in "Builds" folder.
@@ -19,6 +18,7 @@ Things created by me:
 - For what it worth, few minor tweaks of StarField & Explosions vfx (basically scale, colours, emission intensity, etc)
 
 Disclaimer
+==========
 I've tried to implement flexible architecture for hypothetical future development of the game. However, some thing are deliberately done in a way you hardly can expect to see in a fully fledged project, such as:
 
 - String constants are hardcoded if they are used only once;
