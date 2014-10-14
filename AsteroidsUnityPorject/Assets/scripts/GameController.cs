@@ -17,21 +17,14 @@ public class GameController : MonoBehaviour
 		get { return playerShip; }
 	}
 
-	private int CurrentScore
+	public int CurrentScore
 	{
-		set
-		{
-			currentScore = value;
-			ScoreLabel.text = currentScore.ToString();
-		}
 		get { return currentScore; }
 	}
 
 	// how long it takes to destroy asteroid completely
 	public int AsteroidMaxLevel;
-	public UILabel ScoreLabel;
 
-	private int originalHighscore = 0;
 	private int currentScore = 0;
 	private int currentLevel = 0;
 	private List<Asteroid> asteroids = new List<Asteroid>();
@@ -58,8 +51,8 @@ public class GameController : MonoBehaviour
 		}
 		asteroids.Clear();
 		playerShip.Ressurect();
-		originalHighscore = ApplicationManager.Instance.Highscore;
-		CurrentScore = 0;
+
+		currentScore = 0;
 		currentLevel = 0;
 	}
 
@@ -93,14 +86,15 @@ public class GameController : MonoBehaviour
 	private IEnumerator FinishGameCoroutine(float delay, System.Action callback = null)
 	{
 		controls.BlockControls = true;
-		// waiting for letting player watch it's destruction animation
+		// delay to let player watch their's destruction animation
 		yield return new WaitForSeconds(delay);
 
 		string message = "Game over";
-		if (originalHighscore < ApplicationManager.Instance.Highscore)
+		if (currentScore > ApplicationManager.Instance.Highscore)
 		{
-			message += "\nNew highscore: " + ApplicationManager.Instance.Highscore;
+			message += "\nNew highscore: " + currentScore;
 		}
+		ApplicationManager.Instance.UpdateHighscore(currentScore);
 
 		yield return StartCoroutine(TransitionController.Instance.Show(false, message));
 		yield return new WaitForSeconds(0.5f);
@@ -128,8 +122,7 @@ public class GameController : MonoBehaviour
 			shot.Destroy();
 			asteroid.Destroy();
 
-			CurrentScore += asteroid.ScorePrice;
-			ApplicationManager.Instance.UpdateHighscore(currentScore);
+			currentScore += asteroid.ScorePrice;
 
 			if (asteroid.AsteroidLevel < AsteroidMaxLevel)
 			{

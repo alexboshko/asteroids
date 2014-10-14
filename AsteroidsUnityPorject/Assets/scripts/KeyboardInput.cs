@@ -44,7 +44,12 @@ public class KeyboardInput : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.Space))
 		{
-			spaceShip.FireMainWeapon();
+			spaceShip.CurrentWeapon.Launch();
+		}
+
+		if (Input.GetKeyDown(KeyCode.Tab))
+		{
+			spaceShip.NextWeapon();
 		}
 	}
 }

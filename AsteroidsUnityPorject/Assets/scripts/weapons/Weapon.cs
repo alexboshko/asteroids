@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// This is main class for all in-game weapons (only one so far). Weapon-scripts can be dropped on SpaceShipt to "arm" it;
+/// This is a main class for all in-game weapons. Weapon-scripts can be dropped on SpaceShipt to "arm" it;
 /// </summary>
 public class Weapon : MonoBehaviour 
 {
@@ -11,15 +11,33 @@ public class Weapon : MonoBehaviour
 	public SpaceShip Owner;
 
 	private float currentCooldownTime;
+
+	public virtual void Start()
+	{
+		Owner = this.GetComponentInParent<SpaceShip>();
+	}
 	
 	public virtual bool IsReady
 	{
 		get { return currentCooldownTime <= 0.0f; }
 	}
 
+	public virtual string DisplayName
+	{
+		get { return null; }
+	}
+
 	public virtual void Launch()
 	{
-		currentCooldownTime = CooldownDuration;
+		if (this.IsReady)
+		{
+			this.LaunchingLogic();
+			currentCooldownTime = CooldownDuration;
+		}
+	}
+
+	public virtual void LaunchingLogic()
+	{
 	}
 
 	public virtual void Update()

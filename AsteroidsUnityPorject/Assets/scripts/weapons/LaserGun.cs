@@ -6,17 +6,17 @@ using System.Collections;
 /// </summary>
 public class LaserGun : Weapon 
 {
-	public override void Launch()
+	public override string DisplayName
 	{
-		if (this.IsReady)
-		{
-			LaserShot shot = InstantiationUtils<LaserShot>.Instantiate(PrefabsHolder.Instance.LaserShot);
-			shot.Velocity = Owner.Model.transform.TransformDirection(Vector3.forward) * shot.MaxVelocity;
-			shot.transform.position = this.transform.position;
-			shot.transform.rotation = Owner.Model.transform.rotation;
-			this.audio.Play();
+		get { return "Laser Gun"; }
+	}
 
-			base.Launch();
-		}
+	public override void LaunchingLogic()
+	{
+		LaserShot shot = InstantiationUtils<LaserShot>.Instantiate(PrefabsHolder.Instance.LaserShot);
+		shot.Velocity = Owner.Model.transform.TransformDirection(Vector3.forward) * shot.MaxVelocity;
+		shot.transform.position = this.transform.position;
+		shot.transform.rotation = Owner.Model.transform.rotation;
+		this.audio.Play();
 	}
 }

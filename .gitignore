@@ -1,72 +1,33 @@
-# git ls-files --others --exclude-from=.git/info/exclude
-# Lines that start with '#' are comments.
-# For a project mostly in C, the following would be a good set of
-# exclude patterns (uncomment them if you want to use them):
-# *.[oa]
-# *~
-# .DS_Store
+# =============== #
+# Unity generated #
+# =============== #
+AsteroidsUnityPorject/Temp/
+AsteroidsUnityPorject/Obj/
+AsteroidsUnityPorject/UnityGenerated/
+AsteroidsUnityPorject/Library/
 
-#OS junk files
-[Tt]humbs.db
-*.DS_Store
-
-#Visual Studio files
-*.[Oo]bj
-*.exe
-*.pdb
-*.user
-*.aps
-#*.pch
-*.vspscc
-*.vssscc
-*_i.c
-*_p.c
-*.ncb
-*.suo
-*.tlb
-*.tlh
-*.bak
-*.[Cc]ache
-*.ilk
-*.log
-*.lib
-*.sbr
-*.sdf
-*.opensdf
-ipch/
-obj/
-[Bb]in
-Ankh.NoLoad
-*.vcxproj
-*.vcxproj.filters
-
-#xcode specific
-build/*
-*.pbxuser
-*.mode2v3
-*.mode1v3
-*.perspective
-*.perspectivev3
-*~.nib
-
-#ignore private workspace stuff added by Xcode4
-xcuserdata
-project.xcworkspace
-
-#Tooling
-_ReSharper*/
-doxygen/
-*.resharper
-
-#DAVA Resource Packer
-$process/
-
-#Project files
-[Bb]uild/
-
-# Office Temp Files
-~$*
-/*.usertasks
-/*.sublime-workspace
-/*.sublime-project
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
 *.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db

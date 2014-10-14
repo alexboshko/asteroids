@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  - 82: {fileID: 8200002}
   m_Layer: 8
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -144,8 +143,25 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400016}
-  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400008}
   - 82: {fileID: 8200000}
+  m_Layer: 8
+  m_Name: LaserShotGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100018
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400018}
+  - 114: {fileID: 11400004}
+  - 82: {fileID: 8200002}
   m_Layer: 8
   m_Name: LaserGun
   m_TagString: Untagged
@@ -177,6 +193,7 @@ Transform:
   m_LocalScale: {x: .783359349, y: .783359349, z: .783359349}
   m_Children:
   - {fileID: 400008}
+  - {fileID: 400018}
   - {fileID: 400016}
   m_Father: {fileID: 400014}
   m_RootOrder: 0
@@ -263,6 +280,18 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -.494195938, z: -.451322347}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 2
+--- !u!4 &400018
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -.494196087, z: 3.44566584}
   m_LocalScale: {x: 0, y: 0, z: 0}
@@ -374,10 +403,10 @@ AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 100018}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 73c480ae0007ca6418bd851cac7ecb31, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bf75b984df8a84987bcf3a8bf6e2862d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -462,7 +491,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100016}
+  m_GameObject: {fileID: 100018}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4eaba532df84f94fb1dda5a79c1dba1, type: 3}
@@ -480,6 +509,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9aa484bcf536ea40bc2be57a9f1f878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f29fd03c092d614697c24417e4ed7fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CooldownDuration: 2
+  ShotsPerShot: 20
+  FanAngle: 120
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

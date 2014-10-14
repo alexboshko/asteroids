@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 /// <summary>
 /// Main class for player ship; Has additional kinematic values and functions to be called by controls;
@@ -10,18 +11,23 @@ public class SpaceShip : SpaceObject
 	public float AngularDrag;
 
 	private SpaceShipPropulsion shipPropulsionController;
-	private Weapon mainWeapon;
+	private int currentWeapon;
+	private Weapon[] ownedWeapons;
 
 	private Vector3? previousAccelerationInput;
 	private float? previousAngularInput;
+
+	public Weapon CurrentWeapon
+	{
+		get { return ownedWeapons[currentWeapon]; }
+	}
 
 	public override void Awake()
 	{
 		base.Awake();
 
 		shipPropulsionController = this.GetComponentInChildren<SpaceShipPropulsion>();
-		mainWeapon = this.GetComponentInChildren<Weapon>();
-		mainWeapon.Owner = this;
+		ownedWeapons = this.GetComponentsInChildren<Weapon>();
 	}
 
 	public void Accelerate(Vector3 localAcceleration)
@@ -36,9 +42,11 @@ public class SpaceShip : SpaceObject
 		previousAngularInput = angularAcceleration;
 	}
 
-	public void FireMainWeapon()
+	public void NextWeapon()
 	{
-		mainWeapon.Launch();
+		currentWeapon++;
+		if (currentWeapon >= ownedWeapons.Length)
+			currentWeapon = 0;
 	}
 
 	public override void Update()

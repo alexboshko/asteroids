@@ -62,28 +62,23 @@ public class TransitionController : MonoBehaviour
 		else if (state == ETransitionState.Initialized)
 		{
 			FadeSprite.alpha = 0.0f;
-			MessageLabel.text = "";
+			MessageLabel.text = null;
 			yield return DOTween.To(() => FadeSprite.alpha, (alpha) => FadeSprite.alpha = alpha, 1.0f, AnimationDuration).SetEase(TransitionCurve).WaitForCompletion();
 		}
 		else
 		{
 			// this branch is used if message is requested and TransitionController already is showing something
 			yield return DOTween.To(() => MessageLabel.alpha, (alpha) => MessageLabel.alpha = alpha, 0.0f, TextDisappearDuration).SetEase(TransitionCurve).WaitForCompletion();
-			MessageLabel.text = "";
-			MessageLabel.alpha = 1.0f;
 		}
 
 		MessageLabel.fontSize = FontSize;
 
 		if (typeLetters)
 		{
-			int currentLetter = 0;
-			yield return DOTween.To(() => currentLetter, (letter) =>
-				{
-					currentLetter = letter;
-					MessageLabel.text = message.Substring(0, currentLetter);
-				},
-				message.Length, TextTypingSpeed).SetSpeedBased().SetEase(Ease.Linear).WaitForCompletion();
+			MessageLabel.alpha = 1.0f;
+			MessageLabel.text = null;
+			var tweener = DOTween.To(() => MessageLabel.text.Length, (letter) => MessageLabel.text = message.Substring(0, letter), message.Length, TextTypingSpeed);
+			yield return tweener.SetSpeedBased().SetEase(Ease.Linear).WaitForCompletion();
 			MessageLabel.text = message;
 		}
 		else 
