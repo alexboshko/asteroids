@@ -198,7 +198,7 @@ static public class NGUITools
 	{
 		int layerMask = 1 << layer;
 
-		Camera cam;
+		Camera cam ;
 
 		for (int i = 0; i < UICamera.list.size; ++i)
 		{

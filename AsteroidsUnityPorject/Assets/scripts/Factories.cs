@@ -23,7 +23,7 @@ public class AsteroidFactory
 				newAsteroid.transform.position = randomPosition;
 
 				asteroidBounds = newAsteroid.Model.Bounds;
-				asteroidBounds.Expand(asteroidBounds.size * 2.0f);
+				asteroidBounds.Expand(asteroidBounds.size * 5.0f);
 			}
 			// that's actually is a rather poor method to avoid restricted areas, but still is quite fast to implement and passable considering small ship size;
 			while (modelsToAvoid.FirstOrDefault(model => asteroidBounds.Intersects(model.Bounds)) != null);
